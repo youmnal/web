@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./pics/Free__2_-removebg-preview.png" rel="icon">
+    <title>Physics</title>
+    <link rel="stylesheet" href="physics.css">
+</head>
+<body>
+    <nav class="navbar dark-theme">
+      <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+
+        <div class="logo">
+            <img src="pics/./Free__2_-removebg-preview.png" alt="LearnHub Logo" class="logo-img">
+            <span class="brand">Learn<span class="highlight">Hub</span></span>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html" class="nav-item active">Home</a></li>
+            <li><a href="#about.html" class="nav-item">About</a></li>
+
+
+            <!-- Dropdown for Levels -->
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Levels</a>
+                <ul class="dropdown-menu">
+                    <li><a href="level1.html" class="dropdown-item">Level-1</a></li>
+                    <li><a href="level2.html" class="dropdown-item">Level-2</a></li>
+                    
+                </ul>
+            </li>
+
+            
+    </nav>
+
+    <main id="course-section" class="course-view">
+        <aside class="sidebar">
+          <h2>Course Name...</h2>
+          <ul>
+            <li>
+              <a href="#" data-video="https://youtu.be/wLZhuE81x_c?si=yWaAeD0AxOqDAt7Y">Dimensions and units</a>
+            </li>
+            <li>
+              <a href="#" data-video="https://youtu.be/SoZQf-upKsI?si=EqUtw5bubUaIFErK">Electric force</a>
+            </li>
+            <li>
+              <a href="#" data-video="https://youtu.be/Sy9S38_qlB0?si=9q0KJL7MuqGSd7K2">Electric Field</a>
+            </li>
+            <li>
+              <a href="#" data-video="https://youtu.be/KoZ61FujkRk?si=E0Yt8uUcjIAhnPFm">Electric potential and electric potential energy</a>
+            </li>
+            <li>
+              <a href="#" data-video="https://youtu.be/6F_rmZ1nXFQ?si=lRAiQly1n05Dtx48">Kirchhoff’s law</a>
+            </li>
+          </ul>
+        </aside>
+        <section class="content">
+          <div class="video-placeholder">
+            <!-- Video will be dynamically inserted here -->
+          </div>
+          <div class="resources">Other Resources</div>
+        </section>
+      </main>
+      
+      <script>
+        document.querySelectorAll('.sidebar a').forEach(function (link) {
+          link.addEventListener('click', function (e) {
+            e.preventDefault(); // Prevent default link behavior
+      
+            const videoFile = this.getAttribute('data-video'); // Get the video file or YouTube link
+            const videoPlaceholder = document.querySelector('.video-placeholder');
+            let embedLink;
+      
+            if (videoFile.includes('youtu.be')) {
+              // Convert YouTube short link to embed link
+              const videoId = videoFile.split('/').pop().split('?')[0];
+              embedLink = `https://www.youtube.com/embed/${videoId}`;
+            } else if (videoFile.includes('youtube.com/watch')) {
+              // Convert standard YouTube link to embed link
+              const videoId = new URL(videoFile).searchParams.get('v');
+              embedLink = `https://www.youtube.com/embed/${videoId}`;
+            } else {
+              embedLink = videoFile; // Assume it's a local or valid embed link
+            }
+      
+            if (embedLink.includes('youtube.com/embed')) {
+              // Embed YouTube video
+              videoPlaceholder.innerHTML = `
+                <iframe 
+                  width="100%" 
+                  height="315" 
+                  src="${embedLink}" 
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen>
+                </iframe>
+              `;
+            } else {
+              // Embed local video
+              videoPlaceholder.innerHTML = `
+                <video width="100%" controls>
+                  <source src="${embedLink}" type="video/mp4">
+                  Your browser does not support the video tag.
+                </video>
+              `;
+            }
+          });
+        });
+        function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('open');
+    }
+      </script>
+      
+</body>
+</html>

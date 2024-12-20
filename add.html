@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="add.css">
+    <link href="./pics/Free__2_-removebg-preview.png" rel="icon">
+    <title>LearnHub</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+</head>
+
+<body>
+    <nav class="navbar dark-theme">
+        <span class="menu-toggle" onclick="toggleMenu()">☰</span>
+        <div class="logo">
+            <img src="pics/./Free__2_-removebg-preview.png" alt="LearnHub Logo" class="logo-img">
+            <span class="brand">Learn<span class="highlight">Hub</span></span>
+        </div>
+        <ul class="menu">
+            <li><a href="index.html" class="nav-item active">Home</a></li>
+            <li><a href="#about.html" class="nav-item">About</a></li>
+
+
+            <!-- Dropdown for Levels -->
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Levels</a>
+                <ul class="dropdown-menu">
+                    <li><a href="level1.html" class="dropdown-item">Level-1</a></li>
+                    <li><a href="level2.html" class="dropdown-item">Level-2</a></li>
+                    
+                </ul>
+            </li>
+
+            <!-- Dropdown for Fundamentals -->
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Fundamentals</a>
+                <ul class="dropdown-menu">
+                    <li><a href="proglang.html" class="dropdown-item">Programming Languages</a></li>
+                    <li><a href="roadmap.html" class="dropdown-item">Roadmap</a></li>
+                </ul>
+            </li>
+
+            <!-- Dropdown for Departments -->
+            <li class="nav-item dropdown">
+                <a href="#" class="dropdown-toggle">Departments</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="dropdown-item">Software Engineering</a></li>
+                    <li><a href="#" class="dropdown-item">computer science</a></li>
+                    <li><a href="#" class="dropdown-item">Networks</a></li>
+                    <li><a href="#" class="dropdown-item">Ai</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="cta">
+            <a href="manager.html" class="profile-icon">👤</a>
+        </div>
+    </nav>
+
+    <div class="form-container">
+        <h2>Add a Student</h2>
+        <form id="addStudentForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" name="studentName" placeholder="Enter student's name" required>
+            
+            <label for="studentId">Student ID:</label>
+            <input type="text" id="studentId" name="studentId" placeholder="Enter student ID" required>
+            
+            <label for="studentEmail">Email:</label>
+            <input type="email" id="studentEmail" name="studentEmail" placeholder="Enter email address" required>
+            
+            <label for="studentLevel">Level:</label>
+            <select id="studentLevel" name="studentLevel" required>
+                <option value="Level 1">Level 1</option>
+                <option value="Level 2">Level 2</option>
+                <option value="Level 3">Level 3</option>
+                <option value="Level 4">Level 4</option>
+            </select>
+
+            <label for="studentDepartment">Department:</label>
+            <select id="studentDepartment" name="studentDepartment" required>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Computer Science">Computer Science</option>
+                <option value="Networks">Networks</option>
+                <option value="AI">AI</option>
+                <option value="None">None</option>
+            </select>
+
+            <button type="submit">Add Student</button>
+        </form>
+    </div>
+    <script>
+        document.getElementById('addStudentForm').addEventListener('submit', function (e) {
+    e.preventDefault(); // Prevent page reload
+
+    const studentData = {
+        name: document.getElementById('studentName').value,
+        id: document.getElementById('studentId').value,
+        email: document.getElementById('studentEmail').value,
+        level: document.getElementById('studentLevel').value,
+        department: document.getElementById('studentDepartment').value
+    };
+
+    console.log('Student Added:', studentData);
+
+    alert('Student added successfully!');
+    this.reset(); // 
+});
+function toggleMenu() {
+        const menu = document.querySelector('.menu');
+        menu.classList.toggle('open');
+    }
+
+    </script>
+</body>
+
+</html>
